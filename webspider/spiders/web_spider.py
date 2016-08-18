@@ -35,7 +35,7 @@ class WebSpider(scrapy.Spider):
     def parse_dir_content(self, response):
         filename = response.url.split('/')[-2]
         filename = filename if filename else response.url.split("/")[-1]
-        filename += '.html'
+        filename += '_file{}'.format(str(len(self.total_file)))
 
         summary_file = 'summary_{}_{}.txt' \
             .format(self.allowed_domains[0], self.timestamp)
